@@ -1,0 +1,44 @@
+import mensajeros.*
+
+test "contratar mensajero" {
+	mensajeria.contratar(neo)
+	assert.equals(mensajeria.empleados(),#{neo})
+}
+
+test "despedir mensajero"{
+	mensajeria.despedir(neo)
+	assert.equals(mensajeria.empleados(),#{})
+}
+
+test "despedir a todos"{
+	mensajeria.contratar(neo)
+	mensajeria.contratar(roberto)
+	assert.equals(mensajeria.empleados(),#{neo,roberto})
+	
+	mensajeria.despedirTodos()
+	assert.equals(mensajeria.empleados(),#{})
+}
+
+test "mensajeria grande, mas de dos empleados"{
+	mensajeria.contratar(neo)
+	mensajeria.contratar(roberto)
+	assert.notThat(mensajeria.esGrande())
+	
+	mensajeria.contratar(chuck)
+	assert.that(mensajeria.esGrande())
+}
+
+test "primer empleado puede entregar el paquete"{
+	mensajeria.contratar(neo)
+	mensajeria.contratar(roberto)
+	
+	assert.notThat(mensajeria.primerEmpleado())
+}
+
+test "peso del ultimo empleado"{
+	mensajeria.contratar(neo)
+	mensajeria.contratar(roberto)
+	mensajeria.contratar(chuck)
+	
+	assert.equals(mensajeria.pesoUltimo(),90)// arreglar 
+}

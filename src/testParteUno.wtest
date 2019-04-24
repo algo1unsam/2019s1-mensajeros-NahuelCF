@@ -1,0 +1,18 @@
+import mensajeros.*
+import destinos.*
+import transportes.*
+
+test "Roberto - paquete pago - camion - 1 acoplado" {
+	paquete.estaPago(true)
+	roberto.transporte(camion)
+	camion.acoplados(1)
+	
+	assert.that(puente.dejaPasar(roberto))
+}
+
+test "Neo - con credito"{
+	paquete.estaPago(false)
+	neo.credito(true)
+	
+	assert.notThat(puente.dejaPasar(neo))
+}
