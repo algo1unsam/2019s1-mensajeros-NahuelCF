@@ -3,12 +3,13 @@ import destinos.*
 
 test "La mensajeria tiene a neo como empleado si lo agregarmos" {
 	mensajeria.contratar(neo)
-	assert.that(mensajeria.mensajeros().contains(neo))
+	assert.that(mensajeria.empleados().contains(neo))
 }
 
 test "Si neo es empleado, Hay un mensajero que puede enviar el paquete" {
 	mensajeria.contratar(neo)
-	paquete.pagar()
+	//paquete.pagar()
+	paquete.estaPago(true)
 	paquete.destino(matrix)
-	assert.that(mensajeria.mensajeros().contains(neo))
+	assert.that(mensajeria.empleados().contains(neo))
 }

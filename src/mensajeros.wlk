@@ -5,10 +5,15 @@ object paquete{
 	var property estaPago = false
 	
 	var property destino = matrix
+	
+	method pagar(){ //agregue para poder realizar el test que ya venia hecho
+		estaPago = true
+	}
 }
 
 object mensajeria {
-	var property empleados = #{}
+	var property empleados = []
+	
 	method contratar(alguien) {
  		empleados.add(alguien)
  	}
@@ -24,11 +29,11 @@ object mensajeria {
  	method esGrande() = (empleados.size()) > 2
 	
 	method primerEmpleado(){
-		return paquete.destino().dejaPasar(empleados.asList().first())
+		return paquete.destino().dejaPasar(empleados.first())
 	}
 	
 	method pesoUltimo(){
-		return empleados.asList().last().peso()
+		return empleados.last().peso()
 	}
 }
 
